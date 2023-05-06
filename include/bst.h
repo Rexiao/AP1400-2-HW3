@@ -3,6 +3,7 @@
 
 #include <compare>
 #include <functional>
+#include <initializer_list>
 #include <iostream>
 
 class BST {
@@ -11,6 +12,7 @@ class BST {
     BST();
     BST(const BST& bst);
     BST(BST&& bst);
+    BST(std::initializer_list<int>);
 
     BST& operator++();
     BST operator++(int);
@@ -19,7 +21,7 @@ class BST {
     BST& operator=(BST&& other);
 
     Node*& get_root();
-    void bfs(std::function<void(Node*& node)> func);  // const node or not??
+    void bfs(std::function<void(Node*& node)> func) const;  // const node or not??
     size_t length() const;
     bool add_node(int value);
     Node** find_node(int value);
